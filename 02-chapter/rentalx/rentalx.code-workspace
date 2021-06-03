@@ -5,6 +5,7 @@
     }
   ],
   "settings": {
+    "workbench.colorTheme": "Omni",
     "[typescript]": {
       "editor.defaultFormatter": null
     },

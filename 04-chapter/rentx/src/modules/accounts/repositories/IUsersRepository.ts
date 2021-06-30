@@ -1,5 +1,13 @@
-import { ICreateUsersDTO } from "../dtos/ICreateUserDTO";
 import { User } from "../entities/User";
+
+export interface ICreateUsersDTO {
+  name: string;
+  email: string;
+  password: string;
+  driver_license: string;
+  id?: string;
+  avatar?: string;
+}
 
 interface IUsersRepository {
   create(data: ICreateUsersDTO): Promise<void>;

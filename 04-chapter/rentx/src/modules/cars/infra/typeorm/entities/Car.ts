@@ -1,31 +1,4 @@
-// import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
-// import { v4 as uuidv4 } from "uuid";
-
-// @Entity("cars")
-// class Car {
-//   @PrimaryColumn()
-//   id?: string;
-
-//   @Column()
-//   name: string;
-
-//   @Column()
-//   description: string;
-
-//   @Column()
-//   brand: string;
-
-//   @CreateDateColumn()
-//   created_at: Date;
-
-//   constructor() {
-//     if (!this.id) {
-//       this.id = uuidv4();
-//     }
-//   }
-// }
-
-// export { Car };
+import { v4 as uuidv4 } from "uuid";
 
 class Car {
   id: string;
@@ -42,6 +15,14 @@ class Car {
   fine_amount: number;
 
   created_at: Date;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidv4();
+      this.available = true;
+      this.created_at = new Date();
+    }
+  }
 }
 
 export { Car };

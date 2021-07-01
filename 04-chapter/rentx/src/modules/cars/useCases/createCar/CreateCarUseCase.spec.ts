@@ -1,4 +1,5 @@
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
 
 import { CreateCarUseCase } from "./CreateCarUseCase";
 
@@ -24,6 +25,24 @@ describe("Create Car", () => {
   };
 
   it("should be able to create new car", async () => {
-    await createCarUseCase.execute(car);
+    const carCreated = await createCarUseCase.execute(car);
+
+    expect(carCreated).toHaveProperty("id");
+  });
+
+  it("should not be able to create a car with exists license plate", async () => {
+    expect(async () => {
+      await createCarUseCase.execute(car);
+      await createCarUseCase.execute(car);
+    }).rejects.toBeInstanceOf(AppError);
+  });
+
+  it("when creating a car the availability must be true by default", async () => {
+    const carCreated = await createCarUseCase.execute({
+      ...car,
+      license_plate: "CDY-2406",
+    });
+
+    expect(carCreated.available).toBe(true);
   });
 });

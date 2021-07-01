@@ -29,6 +29,9 @@ class Car {
   category: Category;
 
   @Column()
+  category_id: string;
+
+  @Column()
   license_plate: string;
 
   @Column("boolean")

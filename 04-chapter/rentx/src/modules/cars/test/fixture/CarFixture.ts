@@ -10,12 +10,4 @@ export const car: ICreateCarDTO = {
 
   daily_rate: 600,
   fine_amount: 200,
-  // specifications: [
-  //   {
-  //     name: "A Specification",
-  //     id: "spec1",
-  //     created_at: new Date(),
-  //     description: "A Specification Test",
-  //   },
-  // ],
 };

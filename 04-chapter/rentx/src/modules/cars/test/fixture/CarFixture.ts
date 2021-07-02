@@ -1,4 +1,6 @@
-export const car = {
+import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
+
+export const car: ICreateCarDTO = {
   name: "Mercedes C180 Avantgarde",
   description: "Campeão de vendas do segmento de luxo no Brasil.",
   brand: "Mercedes Benz",
@@ -8,4 +10,12 @@ export const car = {
 
   daily_rate: 600,
   fine_amount: 200,
+  // specifications: [
+  //   {
+  //     name: "A Specification",
+  //     id: "spec1",
+  //     created_at: new Date(),
+  //     description: "A Specification Test",
+  //   },
+  // ],
 };

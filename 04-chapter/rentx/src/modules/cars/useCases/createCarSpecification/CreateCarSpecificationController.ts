@@ -19,16 +19,6 @@ class CreateCarSpecificationController {
       return response.status(400).json({ error: "UUID is invalid" });
     }
 
-    // specifications_id?.map((specificationId: string) => {
-    //   const isValid = validate(specificationId);
-
-    //   if (!isValid) {
-    //     return response.status(400).json({ error: "UUID is invalid" });
-    //   }
-
-    //   return true;
-    // });
-
     const createCarSpecificationUseCase = container.resolve(
       CreateCarSpecificationUseCase
     );

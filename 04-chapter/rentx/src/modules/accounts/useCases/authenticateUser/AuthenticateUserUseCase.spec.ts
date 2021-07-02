@@ -1,4 +1,5 @@
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
+import { user } from "@modules/accounts/test/fixture/UserFixture";
 import { CreateUserUseCase } from "@modules/accounts/useCases/createUser/CreateUserUseCase";
 import { AppError } from "@shared/errors/AppError";
 
@@ -7,13 +8,6 @@ import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let usersRepositoryInMemory: UsersRepositoryInMemory;
 let createUserUseCase: CreateUserUseCase;
-
-const newUser = {
-  name: "John Do",
-  email: "john@do.com",
-  driver_license: "123456",
-  password: "secret",
-};
 
 describe("Authenticate User", () => {
   beforeEach(() => {
@@ -25,11 +19,11 @@ describe("Authenticate User", () => {
   });
 
   it("should be able to authenticate an user", async () => {
-    await createUserUseCase.execute(newUser);
+    await createUserUseCase.execute(user);
 
     const tokenAndUserObject = await authenticateUserUseCase.execute({
-      email: newUser.email,
-      password: newUser.password,
+      email: user.email,
+      password: user.password,
     });
 
     expect(tokenAndUserObject).toHaveProperty("token");
@@ -46,10 +40,10 @@ describe("Authenticate User", () => {
 
   it("should not be able to authenticate with incorrect password", async () => {
     expect(async () => {
-      await createUserUseCase.execute(newUser);
+      await createUserUseCase.execute(user);
 
       await authenticateUserUseCase.execute({
-        email: newUser.email,
+        email: user.email,
         password: "incorrectPassword",
       });
     }).rejects.toBeInstanceOf(AppError);

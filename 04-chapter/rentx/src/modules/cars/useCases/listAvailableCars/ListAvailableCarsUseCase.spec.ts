@@ -1,4 +1,5 @@
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
+import { car } from "@modules/cars/test/fixture/CarFixture";
 
 import { ListAvailableCarsUseCase } from "./ListAvailableCarsUseCase";
 
@@ -12,16 +13,6 @@ describe("List Cars", () => {
       carsRepositoryInMemory
     );
   });
-
-  const car = {
-    name: "Mercedes C180 Avantgarde",
-    description: "Campeão de vendas do segmento de luxo no Brasil.",
-    brand: "Mercedes Benz",
-    license_plate: "CWY-2406",
-    category_id: "4e736dd7-1c09-4b89-8a99-7c81a8d96124",
-    daily_rate: 600,
-    fine_amount: 200,
-  };
 
   it("should be able to list all available cars", async () => {
     const carCreatedAvailable = await carsRepositoryInMemory.create(car);

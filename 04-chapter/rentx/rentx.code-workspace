@@ -9,5 +9,8 @@
       "editor.defaultFormatter": null
     },
     "editor.formatOnSave": false,
+    "cSpell.words": [
+      "dtos"
+    ],
   }
 }

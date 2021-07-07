@@ -20,6 +20,11 @@ class DayjsDateProvider implements IDateProvider {
   dateNow(): Date {
     return dayjs().toDate();
   }
+
+  // eslint-disable-next-line
+  validate(date: any): boolean {
+    return dayjs(date).isValid();
+  }
 }
 
 export { DayjsDateProvider };

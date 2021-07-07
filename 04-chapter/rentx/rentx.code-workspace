@@ -10,7 +10,9 @@
     },
     "editor.formatOnSave": false,
     "cSpell.words": [
-      "dtos"
+      "dtos",
+      "rentx",
+      "tsyringe"
     ],
   }
 }

@@ -51,15 +51,8 @@ class DevolutionRentalUseCase {
       daily = minimum_daily;
     }
 
-    // function addDays(date, days) {
-    //   const result = new Date(date);
-    //   result.setDate(result.getDate() + days);
-    //   return result;
-    // }
-
     const delay = this.dateProvider.compareInDays(
       rental.expected_return_date,
-      // addDays(rental.expected_return_date, 3)
       this.dateProvider.dateNow()
     );
 

@@ -28,6 +28,11 @@ class RentalsRepository implements IRentalsRepository {
 
     return rental;
   }
+
+  async findById(id: string): Promise<Rental> {
+    const rentalSearchedById = await this.repository.findOne({ id });
+    return rentalSearchedById;
+  }
 }
 
 export { RentalsRepository };

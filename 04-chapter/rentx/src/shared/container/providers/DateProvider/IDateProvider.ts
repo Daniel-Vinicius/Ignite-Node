@@ -5,6 +5,7 @@ interface IDateProvider {
   convertToUTC(date: Date): string;
   dateNow(): Date;
   validate(date: any): boolean;
+  compareInDays(start_date: Date, end_date: Date): number;
 }
 
 export { IDateProvider };

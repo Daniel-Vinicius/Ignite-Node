@@ -31,11 +31,16 @@ class DevolutionRentalUseCase {
     }
 
     const rental = await this.rentalsRepository.findById(id);
-    const car = await this.carsRepository.findById(id);
 
     if (!rental) {
       throw new AppError("Rental does not exists!", 404);
     }
+
+    if (rental.end_date) {
+      throw new AppError("Rental was ended.", 400);
+    }
+
+    const car = await this.carsRepository.findById(rental.car_id);
 
     let daily = this.dateProvider.compareInDays(
       rental.start_date,
@@ -46,22 +51,30 @@ class DevolutionRentalUseCase {
       daily = minimum_daily;
     }
 
+    // function addDays(date, days) {
+    //   const result = new Date(date);
+    //   result.setDate(result.getDate() + days);
+    //   return result;
+    // }
+
     const delay = this.dateProvider.compareInDays(
-      this.dateProvider.dateNow(),
-      rental.expected_return_date
+      rental.expected_return_date,
+      // addDays(rental.expected_return_date, 3)
+      this.dateProvider.dateNow()
     );
 
     let total = 0;
 
     if (delay > 0) {
       const calculate_fine = delay * car.fine_amount;
-      total = calculate_fine;
+      total += calculate_fine;
     }
 
     total += daily * car.daily_rate;
 
     rental.end_date = this.dateProvider.dateNow();
     rental.total = total;
+    rental.updated_at = new Date();
 
     await this.rentalsRepository.create(rental);
     await this.carsRepository.updateAvailable(car.id, true);

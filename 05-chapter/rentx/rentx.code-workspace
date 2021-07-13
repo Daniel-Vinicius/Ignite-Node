@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "[typescript]": {
+      "editor.defaultFormatter": null
+    },
+    "editor.formatOnSave": false,
+    "cSpell.words": [
+      "dtos",
+      "rentx",
+      "tsyringe"
+    ],
+  }
+}

@@ -20,17 +20,15 @@ describe("Create Car", () => {
   });
 
   it("should not be able to create a car with exists license plate", async () => {
-    expect(async () => {
-      await createCarUseCase.execute(car);
-      await createCarUseCase.execute(car);
-    }).rejects.toBeInstanceOf(AppError);
+    await createCarUseCase.execute(car);
+
+    await expect(createCarUseCase.execute(car)).rejects.toEqual(
+      new AppError("Car already exists!")
+    );
   });
 
   it("when creating a car the availability must be true by default", async () => {
-    const carCreated = await createCarUseCase.execute({
-      ...car,
-      license_plate: "CDY-2406",
-    });
+    const carCreated = await createCarUseCase.execute(car);
 
     expect(carCreated.available).toBe(true);
   });

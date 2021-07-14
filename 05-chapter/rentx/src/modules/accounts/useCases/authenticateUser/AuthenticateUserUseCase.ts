@@ -37,6 +37,7 @@ class AuthenticateUserUseCase {
     if (!passwordMatch) {
       throw new AppError("Email or password incorrect!", 401);
     }
+
     const token = sign({}, "1f95c04fd7c5c1f3c36848ff70da7242", {
       subject: user.id,
       expiresIn: "1d",

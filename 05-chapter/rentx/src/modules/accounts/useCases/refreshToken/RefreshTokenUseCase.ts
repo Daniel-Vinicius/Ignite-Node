@@ -4,6 +4,7 @@ import { inject, injectable } from "tsyringe";
 import auth from "@config/auth";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
+import { AppError } from "@shared/errors/AppError";
 
 interface IPayload {
   sub: string;
@@ -36,7 +37,7 @@ class RefreshTokenUseCase {
       );
 
     if (!userToken) {
-      throw new Error("Refresh Token does not exists!");
+      throw new AppError("Refresh Token does not exists!", 404);
     }
 
     await this.usersTokensRepository.deleteById(userToken.id);

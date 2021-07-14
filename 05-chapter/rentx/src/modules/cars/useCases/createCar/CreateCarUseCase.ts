@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { inject, injectable } from "tsyringe";
 
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
@@ -29,17 +30,23 @@ class CreateCarUseCase {
       throw new AppError("Car already exists!");
     }
 
-    const car = await this.carsRepository.create({
-      name,
-      description,
-      brand,
-      license_plate,
-      category_id,
-      daily_rate,
-      fine_amount,
-    });
+    try {
+      const car = await this.carsRepository.create({
+        name,
+        description,
+        brand,
+        license_plate,
+        category_id,
+        daily_rate,
+        fine_amount,
+      });
 
-    return car;
+      return car;
+    } catch (error) {
+      if (error?.code === "23503" && error?.length === 274) {
+        throw new AppError("Category ID does not exist!");
+      }
+    }
   }
 }
 

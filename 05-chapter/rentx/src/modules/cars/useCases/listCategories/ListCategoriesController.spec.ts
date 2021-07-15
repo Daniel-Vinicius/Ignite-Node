@@ -8,7 +8,7 @@ import { app } from "@shared/infra/http/app";
 import createConnection from "@shared/infra/typeorm";
 
 let connection: Connection;
-let token: string;
+let refresh_token: string;
 let headers: { Authorization: string };
 
 describe("List Categories Controller", () => {
@@ -27,9 +27,9 @@ describe("List Categories Controller", () => {
       .post("/sessions")
       .send({ email: "admin@rentx.com.br", password: "admin" });
 
-    token = responseToken.body.token;
+    refresh_token = responseToken.body.refresh_token;
     headers = {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${refresh_token}`,
     };
   });
 

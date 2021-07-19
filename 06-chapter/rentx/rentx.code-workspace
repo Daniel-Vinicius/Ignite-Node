@@ -1,0 +1,22 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "[typescript]": {
+      "editor.defaultFormatter": null
+    },
+    "editor.formatOnSave": false,
+    "cSpell.words": [
+      "altera",
+      "alteração",
+      "dtos",
+      "lcov",
+      "o",
+      "rentx",
+      "tsyringe"
+    ],
+  }
+}

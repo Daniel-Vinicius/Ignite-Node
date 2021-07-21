@@ -1,6 +1,3 @@
-[submodule "07-deploy/cranetlifydeploy-Ignite"]
-	path = 07-deploy/cranetlifydeploy-Ignite
-	url = https://github.com/Daniel-Vinicius/cranetlifydeploy-Ignite.git
-[submodule "07-deploy/nextverceldeploy-Ignite"]
-	path = 07-deploy/nextverceldeploy-Ignite
-	url = https://github.com/Daniel-Vinicius/nextverceldeploy-Ignite.git
+[submodule "06-chapter/rentx"]
+	path = 06-chapter/rentx
+	url = https://github.com/Daniel-Vinicius/rentx.git

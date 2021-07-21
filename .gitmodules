@@ -1,0 +1,4 @@
+
+[submodule "06-chapter/rentx"]
+	path = 06-chapter/rentx
+	url = https://github.com/Daniel-Vinicius/rentx.git
